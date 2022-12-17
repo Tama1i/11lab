@@ -66,7 +66,7 @@ def sel(pep,zapros):
 
             # Если счетчик равен 0, то работники не найдены.
      if count == 0:
-        print("cheela s takim nomerom net")
+        return "cheela s takim nomerom net", count
 
 from datetime import date
 if __name__ == '__main__':
