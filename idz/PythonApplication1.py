@@ -59,11 +59,7 @@ def sel(pep,zapros):
      for chel in pep:
         if chel.get('num') == zapros:
             count += 1
-            return chel.get, count
-            #print(
-            #     '{:>4}: {}'.format(count, chel.get('name', ''))
-            #)
-
+            return chel, count
             # Если счетчик равен 0, то работники не найдены.
      if count == 0:
         return "cheela s takim nomerom net", count
@@ -72,7 +68,7 @@ from datetime import date
 if __name__ == '__main__':
     # Список работников.
     pep = []
-    s = ""
+    chel = ""
     # Организовать бесконечный цикл запроса команд.
     while True:
         # Запросить команду из терминала.
@@ -89,10 +85,15 @@ if __name__ == '__main__':
             li(pep)
         elif command == 'select':
             zapros = int(input("zapros po numeru  "))
-            s, count = sel(pep,zapros)
+            chel, count = sel(pep,zapros)
             print(
-                 '{:>4}: {}'.format(count, s('name', ''))
-            )
+                  '| {:^4} | {:^30} | {:^20} | {:^8} |'.format(
+                  count,
+                  chel.get('name', ''),
+                  chel.get('num', ''),
+                  chel.get('br', 0)
+                 )
+           )
             
         elif command == 'help':
             # Вывести справку о работе с программой.
@@ -104,5 +105,6 @@ if __name__ == '__main__':
             print("exit - завершить работу с программой.")
         else:
             print(f"Неизвестная команда {command}", file=sys.stderr)
+
 
 
